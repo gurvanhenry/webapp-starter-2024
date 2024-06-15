@@ -1,5 +1,12 @@
 import { useState } from "react";
 import { useBats } from "./use-bats";
+import { Button } from "../components/button";
+import { TrashIcon, PlusIcon, PencilIcon } from "@heroicons/react/24/solid";
+import { Input } from "../components/input";
+import { Badge } from "../components/badge";
+import { Heading } from "../components/heading";
+import { Text, TextLink } from "../components/text";
+import { Divider } from "../components/divider";
 
 export function Bats() {
   const [batTextAdd, setBatTextAdd] = useState("new-bat ✅");
@@ -11,70 +18,94 @@ export function Bats() {
   const { isPending, error, data } = queryGetBats;
 
   return (
-    <div>
-      <div>
-        <input
-          type="text"
-          name="add-bat-id"
-          value={batTextAdd}
-          onChange={(x) => setBatTextAdd(x.currentTarget.value)}
-        />
-        <button
-          disabled={mutationAddBat.isPending}
-          onClick={() => {
-            mutationAddBat.mutate({ text: batTextAdd });
-          }}
-        >
-          Add bat
-        </button>
-        {mutationAddBat.isError && (
-          <span style={{ color: "red" }}>{mutationAddBat.error.message}</span>
-        )}
-        <div>
-          <input
-            type="number"
-            value={batId}
-            onChange={(x) => setBatId(Number(x.currentTarget.value))}
-          />
-          <button
-            disabled={mutationDeleteBat.isPending}
-            onClick={() => {
-              mutationDeleteBat.mutate({ id: String(batId) });
-            }}
-          >
-            detete a bat
-          </button>
-          {mutationDeleteBat.isError && (
-            <span style={{ color: "red" }}>
-              {mutationDeleteBat.error.message}
-            </span>
-          )}
-          <div>
-            <button
-              disabled={mutationEditBat.isPending}
+    <div className="border-2 border-orange-300 p-2 rounded-xl">
+      <Heading level={1} className="mb-4">
+        Bats
+      </Heading>
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-row gap-2">
+            <Input
+              className="w-48"
+              type="text"
+              value={batTextAdd}
+              onChange={(x) => setBatTextAdd(x.currentTarget.value)}
+            />
+            <Button
+              disabled={mutationAddBat.isPending}
               onClick={() => {
-                mutationEditBat.mutate({ id: String(batId), text: batTextAdd });
+                mutationAddBat.mutate({ text: batTextAdd });
               }}
             >
-              Patch bat
-            </button>
-            {mutationEditBat.isError && (
-              <span style={{ color: "red" }}>
-                {mutationEditBat.error.message}
-              </span>
+              <PlusIcon />
+              Add bat
+            </Button>
+            {mutationAddBat.isError && (
+              <Badge color="rose">{mutationAddBat.error.message}</Badge>
             )}
           </div>
-        </div>
-        <div>http://localhost:3030/bat</div>
-        {isPending ? (
-          <div>Loading...</div>
-        ) : error ? (
-          <div>Error: {error.message}</div>
-        ) : (
           <div>
-            <pre>{JSON.stringify(data.data, null, 2)}</pre>
+            <div className="flex flex-row gap-2">
+              <Input
+                className="w-48"
+                type="number"
+                value={batId}
+                onChange={(x) => setBatId(Number(x.currentTarget.value))}
+              />
+              <Button
+                disabled={mutationDeleteBat.isPending}
+                onClick={() => {
+                  mutationDeleteBat.mutate({ id: String(batId) });
+                }}
+              >
+                <TrashIcon />
+                Detete a bat
+              </Button>
+              {mutationDeleteBat.isError && (
+                <Badge color="rose">{mutationDeleteBat.error.message}</Badge>
+              )}
+            </div>
           </div>
-        )}
+          <div>
+            <div>
+              <Button
+                disabled={mutationEditBat.isPending}
+                onClick={() => {
+                  mutationEditBat.mutate({
+                    id: String(batId),
+                    text: batTextAdd,
+                  });
+                }}
+              >
+                <PencilIcon />
+                Patch bat
+              </Button>
+              {mutationEditBat.isError && (
+                <Badge color="rose">{mutationEditBat.error.message}</Badge>
+              )}
+            </div>
+          </div>
+        </div>
+        <Divider />
+        <Text>
+          Api call :{" "}
+          <TextLink href={`${import.meta.env.VITE_API_URL}/bat`}>
+            {import.meta.env.VITE_API_URL}/bat
+          </TextLink>
+        </Text>
+        <div>
+          {isPending ? (
+            <Text className="">Loading...</Text>
+          ) : error ? (
+            <Text className="text-red-500">Error: {error.message}</Text>
+          ) : (
+            <div>
+              <Text className="text-xs">
+                <pre>{JSON.stringify(data.data, null, 2)}</pre>
+              </Text>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
