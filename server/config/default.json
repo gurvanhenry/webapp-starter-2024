@@ -14,6 +14,10 @@
     "connection": "featherapp1.sqlite",
     "useNullAsDefault": true
   },
+  "postgresql": {
+    "client": "pg",
+    "connection": "postgres://localhost/feather-starter"
+  },
   "authentication": {
     "entity": "user",
     "service": "users",

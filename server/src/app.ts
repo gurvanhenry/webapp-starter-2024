@@ -7,6 +7,7 @@ import { configurationValidator } from './configuration'
 import type { Application } from './declarations'
 import { logError } from './hooks/log-error'
 import { sqlite } from './sqlite'
+import { postgresql } from './postgresql'
 import { authentication } from './authentication'
 import { services } from './services/index'
 
@@ -25,7 +26,7 @@ app.use(bodyParser())
 // Configure services and transports
 app.configure(rest())
 
-app.configure(sqlite)
+app.configure(postgresql)
 app.configure(authentication)
 app.configure(services)
 

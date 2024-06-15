@@ -21,7 +21,7 @@ export class BatService<ServiceParams extends Params = BatParams> extends KnexSe
 export const getOptions = (app: Application): KnexAdapterOptions => {
   return {
     paginate: app.get('paginate'),
-    Model: app.get('sqliteClient'),
+    Model: app.get('postgresqlClient'),
     name: 'bat'
   }
 }
