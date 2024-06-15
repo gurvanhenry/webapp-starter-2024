@@ -1,3 +1,4 @@
+import { Outlet, useLocation } from "react-router-dom";
 import {
   ArrowRightStartOnRectangleIcon,
   ChevronUpIcon,
@@ -8,7 +9,12 @@ import {
   Square2StackIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
-import { Navbar, NavbarItem, NavbarSection, NavbarSpacer } from "../components/navbar";
+import {
+  Navbar,
+  NavbarItem,
+  NavbarSection,
+  NavbarSpacer,
+} from "../components/navbar";
 import {
   Sidebar,
   SidebarBody,
@@ -29,8 +35,8 @@ import {
 } from "../components/dropdown";
 import { Avatar } from "../components/avatar";
 
-export function Layout({ children }: React.PropsWithChildren) {
-  const pathname = "/";
+export function Layout() {
+  const { pathname } = useLocation();
 
   return (
     <SidebarLayout
@@ -52,24 +58,22 @@ export function Layout({ children }: React.PropsWithChildren) {
           <SidebarHeader>
             <div className="flex flex-row gap-4 items-center">
               <Avatar
-                className="w-12"
+                className="w-12 h-12"
                 src="https://picsum.photos/id/28/200/200"
               />
               <SidebarLabel>Starter web app</SidebarLabel>
             </div>
           </SidebarHeader>
-
           <SidebarBody>
             <SidebarSection>
               <SidebarItem href="/" current={pathname === "/"}>
                 <HomeIcon />
                 <SidebarLabel>Home</SidebarLabel>
               </SidebarItem>
-              <SidebarItem href="/dev" current={pathname.startsWith("/dev")}>
+              <SidebarItem href="/bats" current={pathname.startsWith("/bats")}>
                 <Square2StackIcon />
-                <SidebarLabel>Events</SidebarLabel>
+                <SidebarLabel>Bats</SidebarLabel>
               </SidebarItem>
-
               <SidebarItem
                 href="/settings"
                 current={pathname.startsWith("/settings")}
@@ -79,7 +83,6 @@ export function Layout({ children }: React.PropsWithChildren) {
               </SidebarItem>
             </SidebarSection>
           </SidebarBody>
-
           <SidebarFooter className="max-lg:hidden">
             <Dropdown>
               <DropdownButton as={SidebarItem}>
@@ -107,7 +110,7 @@ export function Layout({ children }: React.PropsWithChildren) {
         </Sidebar>
       }
     >
-      {children}
+      <Outlet />
     </SidebarLayout>
   );
 }

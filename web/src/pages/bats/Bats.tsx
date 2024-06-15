@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useBats } from "./use-bats";
-import { Button } from "../components/button";
+import { Button } from "../../components/button";
 import { TrashIcon, PlusIcon, PencilIcon } from "@heroicons/react/24/solid";
-import { Input } from "../components/input";
-import { Badge } from "../components/badge";
-import { Heading } from "../components/heading";
-import { Text, TextLink } from "../components/text";
-import { Divider } from "../components/divider";
+import { Input } from "../../components/input";
+import { Badge } from "../../components/badge";
+import { Heading } from "../../components/heading";
+import { Text, TextLink } from "../../components/text";
+import { Divider } from "../../components/divider";
 import {
   Table,
   TableBody,
@@ -14,7 +14,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../components/table";
+} from "../../components/table";
 
 export function Bats() {
   const [batTextAdd, setBatTextAdd] = useState("new-bat ✅");
