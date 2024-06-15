@@ -1,8 +1,10 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
-const URL = "http://localhost:3030";
+const URL = import.meta.env.VITE_API_URL;
 
+console.log('URL', URL);
+console.log('import.meta.env', import.meta.env);
 const getBats = async () => {
   const data = await axios.get(`${URL}/bat`, {
     params: { $limit: "100" },
