@@ -2,11 +2,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import {
   ArrowRightStartOnRectangleIcon,
   ChevronUpIcon,
-  Cog6ToothIcon,
-  HomeIcon,
   LightBulbIcon,
   ShieldCheckIcon,
-  Square2StackIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
 import {
@@ -22,7 +19,6 @@ import {
   SidebarHeader,
   SidebarItem,
   SidebarLabel,
-  SidebarSection,
 } from "../components/sidebar";
 import { SidebarLayout } from "../components/sidebar-layout";
 import {
@@ -34,6 +30,7 @@ import {
   DropdownMenu,
 } from "../components/dropdown";
 import { Avatar } from "../components/avatar";
+import { SideMenuLinks } from "./SideMenuLinks";
 
 export function Layout() {
   const { pathname } = useLocation();
@@ -65,23 +62,7 @@ export function Layout() {
             </div>
           </SidebarHeader>
           <SidebarBody>
-            <SidebarSection>
-              <SidebarItem href="/" current={pathname === "/"}>
-                <HomeIcon />
-                <SidebarLabel>Home</SidebarLabel>
-              </SidebarItem>
-              <SidebarItem href="/bats" current={pathname.startsWith("/bats")}>
-                <Square2StackIcon />
-                <SidebarLabel>Bats</SidebarLabel>
-              </SidebarItem>
-              <SidebarItem
-                href="/settings"
-                current={pathname.startsWith("/settings")}
-              >
-                <Cog6ToothIcon />
-                <SidebarLabel>Settings</SidebarLabel>
-              </SidebarItem>
-            </SidebarSection>
+            <SideMenuLinks pathname={pathname} />
           </SidebarBody>
           <SidebarFooter className="max-lg:hidden">
             <Dropdown>
