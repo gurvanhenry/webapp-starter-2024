@@ -16,6 +16,10 @@
   - featherjs
   - email service
 
+## todo
+
+- add a docker-compose
+
 ## maybe try / include
 
 - auth-js and express
