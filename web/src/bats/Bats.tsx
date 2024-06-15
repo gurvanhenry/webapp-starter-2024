@@ -26,7 +26,7 @@ export function Bats() {
         <div className="flex flex-col gap-2">
           <div className="flex flex-row gap-2">
             <Input
-              className="w-48"
+              className="max-w-48"
               type="text"
               value={batTextAdd}
               onChange={(x) => setBatTextAdd(x.currentTarget.value)}
@@ -47,7 +47,7 @@ export function Bats() {
           <div>
             <div className="flex flex-row gap-2">
               <Input
-                className="w-48"
+                className="max-w-48"
                 type="number"
                 value={batId}
                 onChange={(x) => setBatId(Number(x.currentTarget.value))}
