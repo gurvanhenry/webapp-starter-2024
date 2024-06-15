@@ -18,7 +18,7 @@ curl 'http://localhost:3030/bat/2' \
 curl 'http://localhost:3030/users/' \
   -X POST \
   -H 'Content-Type: application/json' \
-  --data-binary '{ "email": "hello5@feathersjs.com", "password": "supersecret" }'
+  --data-binary '{ "email": "hello@feathersjs.com", "password": "supersecret" }'
 
 
 # login 

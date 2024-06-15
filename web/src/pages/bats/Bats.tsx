@@ -118,7 +118,7 @@ export function Bats() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {batsItems.map((bat: Bats) => (
+                  {batsItems.map((bat: Bat) => (
                     <TableRow key={bat.id}>
                       <TableCell>{bat.id}</TableCell>
                       <TableCell className="text-zinc-500">
@@ -143,4 +143,5 @@ export function Bats() {
     </>
   );
 }
-type Bats = { id: string; text: string };
+
+type Bat = { id: string; text: string };

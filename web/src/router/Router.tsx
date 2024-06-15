@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home } from "../pages/home/Home";
-import { Bats } from "../pages/bats/Bats";
-import { Users } from "../pages/users/Users";
 import { Layout } from "../layout/Layout";
+import { Home } from "../pages/home/Home";
+import { Users } from "../pages/users/Users";
+import { Bats } from "../pages/bats/Bats";
 
 export function Router() {
   return (
