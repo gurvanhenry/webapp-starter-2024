@@ -7,6 +7,14 @@ import { Badge } from "../components/badge";
 import { Heading } from "../components/heading";
 import { Text, TextLink } from "../components/text";
 import { Divider } from "../components/divider";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../components/table";
 
 export function Bats() {
   const [batTextAdd, setBatTextAdd] = useState("new-bat ✅");
@@ -16,6 +24,8 @@ export function Bats() {
     useBats();
 
   const { isPending, error, data } = queryGetBats;
+
+  const batsItems = data?.data?.data;
 
   return (
     <>
@@ -100,9 +110,32 @@ export function Bats() {
             <Text className="text-red-500">Error: {error.message}</Text>
           ) : (
             <div>
-              <Text className="text-xs">
-                <pre>{JSON.stringify(data.data, null, 2)}</pre>
-              </Text>
+              <Table>
+                <TableHead>
+                  <TableRow>
+                    <TableHeader>id</TableHeader>
+                    <TableHeader>text</TableHeader>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {batsItems.map((bat: Bats) => (
+                    <TableRow key={bat.id}>
+                      <TableCell>{bat.id}</TableCell>
+                      <TableCell className="text-zinc-500">
+                        {bat.text}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+              <Text className="font-bold my-4">Raw response :</Text>
+              <div>
+                <pre>
+                  <Text className="text-xs">
+                    {JSON.stringify(data.data, null, 2)}
+                  </Text>
+                </pre>
+              </div>
             </div>
           )}
         </div>
@@ -110,3 +143,4 @@ export function Bats() {
     </>
   );
 }
+type Bats = { id: string; text: string };

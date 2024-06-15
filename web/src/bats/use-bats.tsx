@@ -3,8 +3,6 @@ import axios from "axios";
 
 const URL = import.meta.env.VITE_API_URL;
 
-console.log('URL', URL);
-console.log('import.meta.env', import.meta.env);
 const getBats = async () => {
   const data = await axios.get(`${URL}/bat`, {
     params: { $limit: "100" },
