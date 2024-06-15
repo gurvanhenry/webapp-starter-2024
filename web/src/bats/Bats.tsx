@@ -18,7 +18,7 @@ export function Bats() {
   const { isPending, error, data } = queryGetBats;
 
   return (
-    <div className="border-2 border-orange-300 p-2 rounded-xl">
+    <>
       <Heading level={1} className="mb-4">
         Bats
       </Heading>
@@ -107,6 +107,6 @@ export function Bats() {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
