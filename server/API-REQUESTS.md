@@ -18,14 +18,14 @@ curl 'http://localhost:3030/bat/2' \
 curl 'http://localhost:3030/users/' \
   -X POST \
   -H 'Content-Type: application/json' \
-  --data-binary '{ "email": "hello@feathersjs.com", "password": "supersecret" }'
+  --data-binary '{ "email": "gugu@example.com", "password": "supersecret" }'
 
 
 # login 
 
 curl 'http://localhost:3030/authentication/' \
   -H 'Content-Type: application/json' \
-  --data-binary '{ "strategy": "local", "email": "hello@feathersjs.com", "password": "supersecret" }'
+  --data-binary '{ "strategy": "local", "email": "gugu@example.com", "password": "supersecret" }'
 
 # users with token 
 
