@@ -31,7 +31,7 @@ export function SideMenuLinks({ pathname }: { pathname: string }) {
     {
       href: "/auth",
       icon: <KeyIcon />,
-      label: "Autth",
+      label: "Auth",
     },
     {
       href: "/settings",
@@ -43,7 +43,7 @@ export function SideMenuLinks({ pathname }: { pathname: string }) {
   return (
     <SidebarSection>
       {Links.map((link) => (
-        <SidebarItem href={link.href} current={pathname === link.href}>
+        <SidebarItem key={link.href} href={link.href} current={pathname === link.href}>
           {link.icon}
           <SidebarLabel>{link.label}</SidebarLabel>
         </SidebarItem>

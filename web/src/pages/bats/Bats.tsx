@@ -29,7 +29,7 @@ export function Bats() {
 
   return (
     <>
-      <Heading level={1} className="mb-4">
+      <Heading level={1} className="mb-4 text-2xl">
         Bats
       </Heading>
       <div className="flex flex-col gap-4">
