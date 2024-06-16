@@ -3,6 +3,7 @@ import {
   Square2StackIcon,
   Cog6ToothIcon,
   UserGroupIcon,
+  KeyIcon,
 } from "@heroicons/react/24/solid";
 import {
   SidebarSection,
@@ -11,24 +12,42 @@ import {
 } from "../components/sidebar";
 
 export function SideMenuLinks({ pathname }: { pathname: string }) {
+  const Links = [
+    {
+      href: "/",
+      icon: <HomeIcon />,
+      label: "Home",
+    },
+    {
+      href: "/bats",
+      icon: <Square2StackIcon />,
+      label: "Bats",
+    },
+    {
+      href: "/users",
+      icon: <UserGroupIcon />,
+      label: "Users",
+    },
+    {
+      href: "/auth",
+      icon: <KeyIcon />,
+      label: "Autth",
+    },
+    {
+      href: "/settings",
+      icon: <Cog6ToothIcon />,
+      label: "Settings",
+    },
+  ];
+
   return (
     <SidebarSection>
-      <SidebarItem href="/" current={pathname === "/"}>
-        <HomeIcon />
-        <SidebarLabel>Home</SidebarLabel>
-      </SidebarItem>
-      <SidebarItem href="/bats" current={pathname.startsWith("/bats")}>
-        <Square2StackIcon />
-        <SidebarLabel>Bats</SidebarLabel>
-      </SidebarItem>
-      <SidebarItem href="/users" current={pathname.startsWith("/users")}>
-        <UserGroupIcon/>
-        <SidebarLabel>Users</SidebarLabel>
-      </SidebarItem>
-      <SidebarItem href="/settings" current={pathname.startsWith("/settings")}>
-        <Cog6ToothIcon />
-        <SidebarLabel>Settings</SidebarLabel>
-      </SidebarItem>
+      {Links.map((link) => (
+        <SidebarItem href={link.href} current={pathname === link.href}>
+          {link.icon}
+          <SidebarLabel>{link.label}</SidebarLabel>
+        </SidebarItem>
+      ))}
     </SidebarSection>
   );
 }
