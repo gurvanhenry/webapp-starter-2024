@@ -9,10 +9,14 @@ import {
   SidebarSection,
   SidebarItem,
   SidebarLabel,
+  SidebarHeading,
 } from "../components/sidebar";
+import { useAuth } from "../auth/auth-context";
 
 export function SideMenuLinks({ pathname }: { pathname: string }) {
-  const Links = [
+  const { isAuthenticated } = useAuth();
+
+  const linkPublic = [
     {
       href: "/",
       icon: <HomeIcon />,
@@ -24,14 +28,16 @@ export function SideMenuLinks({ pathname }: { pathname: string }) {
       label: "Bats",
     },
     {
+      href: "/signin",
+      icon: <KeyIcon />,
+      label: "Sign In",
+    },
+  ];
+  const linkProtected = [
+    {
       href: "/users",
       icon: <UserGroupIcon />,
       label: "Users",
-    },
-    {
-      href: "/auth",
-      icon: <KeyIcon />,
-      label: "Auth",
     },
     {
       href: "/settings",
@@ -41,13 +47,35 @@ export function SideMenuLinks({ pathname }: { pathname: string }) {
   ];
 
   return (
-    <SidebarSection>
-      {Links.map((link) => (
-        <SidebarItem key={link.href} href={link.href} current={pathname === link.href}>
-          {link.icon}
-          <SidebarLabel>{link.label}</SidebarLabel>
-        </SidebarItem>
-      ))}
-    </SidebarSection>
+    <>
+      <SidebarSection>
+        <SidebarHeading>Public</SidebarHeading>
+        {linkPublic.map((link) => (
+          <SidebarItem
+            key={link.href}
+            href={link.href}
+            current={pathname === link.href}
+          >
+            {link.icon}
+            <SidebarLabel>{link.label}</SidebarLabel>
+          </SidebarItem>
+        ))}
+        {isAuthenticated && (
+          <>
+            <SidebarHeading>Protected</SidebarHeading>
+            {linkProtected.map((link) => (
+              <SidebarItem
+                key={link.href}
+                href={link.href}
+                current={pathname === link.href}
+              >
+                {link.icon}
+                <SidebarLabel>{link.label}</SidebarLabel>
+              </SidebarItem>
+            ))}
+          </>
+        )}
+      </SidebarSection>
+    </>
   );
 }

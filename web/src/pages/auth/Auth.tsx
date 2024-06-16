@@ -3,21 +3,14 @@ import { Button } from "../../components/button";
 import { Field, Label } from "../../components/fieldset";
 import { Heading } from "../../components/heading";
 import { Input } from "../../components/input";
-import { useSignIn } from "./use-sign-in";
+import { useSignIn } from "../../auth/use-sign-in";
 import { Badge } from "../../components/badge";
 import { Text } from "../../components/text";
-import { useSignOut } from "./use-sign-out";
 
-export function Auth() {
+export function SignIn() {
   return (
     <>
-      <div className="flex flex-col gap-4">
-        <Heading level={1} className="mb-4 text-2xl">
-          Login
-        </Heading>
-        <LoginForm />
-        <Logout />
-      </div>
+      <LoginForm />
     </>
   );
 }
@@ -79,17 +72,6 @@ function LoginForm() {
           <div>User : {JSON.stringify(mutageSignIn.data.data.user)}</div>
         </Text>
       )}
-    </div>
-  );
-}
-
-function Logout() {
-  const { clearToken } = useSignOut();
-  return (
-    <div className="flex flex-col gap-2">
-      <div className="rounded-xl bg-white p-8 shadow  border flex flex-col gap-4 sm:mx-auto sm:w-full sm:max-w-sm">
-        <Button onClick={() => clearToken()}>Sign out</Button>
-      </div>
     </div>
   );
 }

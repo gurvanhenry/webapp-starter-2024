@@ -3,7 +3,7 @@ import { Layout } from "../layout/Layout";
 import { Home } from "../pages/home/Home";
 import { Users } from "../pages/users/Users";
 import { Bats } from "../pages/bats/Bats";
-import { Auth } from "../pages/auth/Auth";
+import { SignIn } from "../pages/auth/Auth";
 
 export function Router() {
   return (
@@ -13,7 +13,7 @@ export function Router() {
           <Route index element={<Home />} />
           <Route path="/bats" element={<Bats />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/auth" element={<Auth />} />
+          <Route path="/signin" element={<SignIn />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>

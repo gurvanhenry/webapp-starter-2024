@@ -1,5 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { useAuth } from "./auth-context";
+import { useNavigate } from "react-router-dom";
 
 const URL = import.meta.env.VITE_API_URL;
 
@@ -23,19 +25,19 @@ const signIn = async ({
 };
 
 export const useSignIn = () => {
+  const { saveTokenInStorage, cleanTokenOfStorage } = useAuth();
+
+  const navigate = useNavigate();
+
   const mutageSignIn = useMutation({
     mutationFn: signIn,
     onSuccess: (data) => {
-      // store token  in localstorage
-      const token = data.data.accessToken;
-      axios.defaults.headers.common["Authorization"] = "Bearer " + token;
-      localStorage.setItem("token", token);
+      saveTokenInStorage(data.data.accessToken);
+      navigate("/users");
     },
     onError: (error) => {
+      cleanTokenOfStorage();
       console.log(error);
-      // we could show a toast here
-      delete axios.defaults.headers.common["Authorization"];
-      localStorage.removeItem("token");
     },
   });
 
