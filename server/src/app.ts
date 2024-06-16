@@ -6,7 +6,6 @@ import { koa, rest, bodyParser, errorHandler, parseAuthentication, cors, serveSt
 import { configurationValidator } from './configuration'
 import type { Application } from './declarations'
 import { logError } from './hooks/log-error'
-import { sqlite } from './sqlite'
 import { postgresql } from './postgresql'
 import { authentication } from './authentication'
 import { services } from './services/index'
@@ -15,6 +14,8 @@ const app: Application = koa(feathers())
 
 // Load our app configuration (see config/ folder)
 app.configure(configuration(configurationValidator))
+
+console.log('Configuration loaded: 🎸')
 
 // Set up Koa middleware
 app.use(cors())

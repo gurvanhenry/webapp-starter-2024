@@ -1,0 +1,32 @@
+services:
+  db:
+    image: postgres:alpine
+    container_name: webapp-starter-db
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: start-web-db
+
+  server:
+    container_name: webapp-starter-server
+    build:
+      context: server
+      dockerfile: Dockerfile
+    ports:
+      - "3030:3030"
+    depends_on:
+      - db
+    environment:
+      POSTGRESQL_URI: postgres://admin:pass@db:5433/start-web-db
+
+  web:
+    container_name: webapp-starter-web
+    build:
+      context: web
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - server
