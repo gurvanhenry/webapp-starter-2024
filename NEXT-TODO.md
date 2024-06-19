@@ -1,3 +1,9 @@
+// important
+
+- finish e2e test login 
+- add new route to auth
+- plug login to front
+
 // main
 
 - plug to my front

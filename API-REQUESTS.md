@@ -50,3 +50,9 @@ curl -i localhost:3000/auth/signIn \
 # POST /auth/signIn
 
 curl -X POST http://localhost:3000/auth/signIn -d '{"username": "user", "password": "pass"}' -H "Content-Type: application/json"
+
+curl -i http://localhost:3000/auth/profile
+
+curl -X POST http://localhost:3000/auth/signIn -d '{"username": "user", "password": "pass"}' -H "Content-Type: application/json"
+
+curl http://localhost:3000/auth/profile -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInVzZXJuYW1lIjoidXNlciIsImlhdCI6MTcxODc4MzgyOSwiZXhwIjoxNzE4NzgzODg5fQ.x50hHejgNYs6zn8lZ9aejndqXvyJ44dLB0Om2LJMA04"
