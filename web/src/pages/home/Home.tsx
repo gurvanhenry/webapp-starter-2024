@@ -21,8 +21,8 @@ export function Home() {
 
       <Text>
         Protected page after sign in :{" "}
-        <Link href="/auth" className="underline hover:no-underline">
-          /auth
+        <Link href="/signin" className="underline hover:no-underline">
+          /signin
         </Link>
       </Text>
     </div>
