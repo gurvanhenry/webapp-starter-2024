@@ -15,3 +15,4 @@
 //
 
 - try graphql
+- add a docker-compose

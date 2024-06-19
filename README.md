@@ -2,6 +2,16 @@
 
 **purpose**: Make a starter repo with front / back ready with basic stufflike user management ready.
 
+## run
+
+- `cd web` `yarn dev`
+- `cd server` `yarn dev`
+
+=> web on http://localhost:8080
+=> server on http://localhost:3000
+
+=> try `curl -i localhost:3000/bats/findAll --request POST`
+
 ## stack
 
 - front :
@@ -15,22 +25,3 @@
 
   - nest
   - email service
-
-## todo
-
-- add a docker-compose
-
-## run with docker
-
-- `cd web` `docker build --tag webapp-starter-web .`
-
-- `docker run -p 8080:8080 webapp-starter-web`
-- `docker run -p 8080:8080 -d webapp-starter-web`
-
-other:
-`docker ps`
-`docker stop CONTAINERID`
-`docker rm CONTAINERID`
-
-- `docker-compose up -d`
-- `docker-compose down`
