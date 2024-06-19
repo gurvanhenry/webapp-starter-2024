@@ -74,4 +74,13 @@ describe('AppController (e2e)', () => {
         });
     });
   });
+  describe('auth', () => {
+    it('/auth/signIn', () => {
+      return request(app.getHttpServer())
+        .post('/auth/signIn')
+        .send({ username: 'user', password: 'pass' })
+        .expect(200)
+        .expect({ userId: 2, username: 'user' });
+    });
+  });
 });

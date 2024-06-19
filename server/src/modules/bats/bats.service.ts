@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { Bat } from './entity/bat.interface';
+import { Bat } from './interfaces/bat.interface';
 import { CreateDto } from './dto/create.dto';
 import { ChangeStatusDto } from './dto/change-status.dto';
 import { RemoveDto } from './dto/remove.dto';

@@ -16,3 +16,4 @@
 
 - try graphql
 - add a docker-compose
+- add and configurate eslint prettier etc...

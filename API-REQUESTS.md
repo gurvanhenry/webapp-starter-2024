@@ -39,3 +39,10 @@ curl -i localhost:3000/bats/remove \
 --request POST \
 --header "Content-Type: application/json" \
 --data '{ "id" : 1 }'
+
+#
+
+curl -i localhost:3000/auth/signIn \
+--request POST \
+--header "Content-Type: application/json" \
+--data '{ "username": "user", "password": "pass" }'
