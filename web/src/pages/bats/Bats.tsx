@@ -25,7 +25,7 @@ export function Bats() {
 
   const { isPending, error, data } = queryGetBats;
 
-  const batsItems = data?.data?.data;
+  const batsItems = data?.data;
 
   return (
     <>
@@ -65,7 +65,7 @@ export function Bats() {
               <Button
                 disabled={mutationDeleteBat.isPending}
                 onClick={() => {
-                  mutationDeleteBat.mutate({ id: String(batId) });
+                  mutationDeleteBat.mutate({ id: batId });
                 }}
               >
                 <TrashIcon />
@@ -81,10 +81,7 @@ export function Bats() {
               <Button
                 disabled={mutationEditBat.isPending}
                 onClick={() => {
-                  mutationEditBat.mutate({
-                    id: String(batId),
-                    text: batTextAdd,
-                  });
+                  mutationEditBat.mutate({ id: batId, text: batTextAdd });
                 }}
               >
                 <PencilIcon />
@@ -144,4 +141,4 @@ export function Bats() {
   );
 }
 
-type Bat = { id: string; text: string };
+export type Bat = { id: string; text: string };

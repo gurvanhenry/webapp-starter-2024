@@ -1,33 +1,32 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import { Bat } from "./Bats";
 
 const URL = import.meta.env.VITE_API_URL;
 
 const getBats = async () => {
-  const data = await axios.get(`${URL}/bat`, {
-    params: { $limit: "100" },
-  });
+  const data = await axios.post<Bat[]>(`${URL}/bats/findAll`);
   return data;
 };
 
 const postBat = async ({ text }: { text: string }) => {
   const data = await axios.post(
-    `${URL}/bat`,
-    { text },
+    `${URL}/bats/create`,
+    { text, status: "web" },
     { headers: { "Content-Type": "application/json" } }
   );
   return data;
 };
 
-const deleteBat = async ({ id }: { id: string }) => {
-  const data = await axios.delete(`${URL}/bat/${id}`);
+const deleteBat = async ({ id }: { id: number }) => {
+  const data = await axios.post(`${URL}/bats/remove`, { id: id });
   return data;
 };
 
-const patchBat = async ({ id, text }: { id: string; text: string }) => {
-  const data = await axios.patch(
-    `${URL}/bat/${id}`,
-    { text },
+const patchBat = async ({ id, text }: { id: number; text: string }) => {
+  const data = await axios.post(
+    `${URL}/bats/changeStatus`,
+    { id: id, status: text },
     { headers: { "Content-Type": "application/json" } }
   );
   return data;
