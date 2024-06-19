@@ -3,6 +3,7 @@
 - finish e2e test login 
 - add new route to auth
 - plug login to front
+- fiish https://docs.nestjs.com/security/authentication#enable-authentication-globally
 
 // main
 
