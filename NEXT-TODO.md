@@ -17,3 +17,4 @@
 - try graphql
 - add a docker-compose
 - add and configurate eslint prettier etc...
+- extract JWT-token in env var

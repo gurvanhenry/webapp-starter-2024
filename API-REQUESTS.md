@@ -46,3 +46,7 @@ curl -i localhost:3000/auth/signIn \
 --request POST \
 --header "Content-Type: application/json" \
 --data '{ "username": "user", "password": "pass" }'
+
+# POST /auth/signIn
+
+curl -X POST http://localhost:3000/auth/signIn -d '{"username": "user", "password": "pass"}' -H "Content-Type: application/json"
