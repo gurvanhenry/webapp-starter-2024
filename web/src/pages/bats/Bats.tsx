@@ -16,6 +16,8 @@ import {
   TableRow,
 } from "../../components/table";
 
+export type Bat = { id: number; text: string; status: string };
+
 export function Bats() {
   const [batTextAdd, setBatTextAdd] = useState("new-bat ✅");
   const [batId, setBatId] = useState(0);
@@ -24,8 +26,6 @@ export function Bats() {
     useBats();
 
   const { isPending, error, data } = queryGetBats;
-
-  const batsItems = data?.data;
 
   return (
     <>
@@ -112,14 +112,18 @@ export function Bats() {
                   <TableRow>
                     <TableHeader>id</TableHeader>
                     <TableHeader>text</TableHeader>
+                    <TableHeader>status</TableHeader>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {batsItems.map((bat: Bat) => (
-                    <TableRow key={bat.id}>
+                  {data.data.map((bat: Bat) => (
+                    <TableRow key={bat.id} className="text-zinc-500">
                       <TableCell>{bat.id}</TableCell>
                       <TableCell className="text-zinc-500">
                         {bat.text}
+                      </TableCell>
+                      <TableCell className="text-zinc-500">
+                        {bat.status}
                       </TableCell>
                     </TableRow>
                   ))}
@@ -140,5 +144,3 @@ export function Bats() {
     </>
   );
 }
-
-export type Bat = { id: string; text: string };
