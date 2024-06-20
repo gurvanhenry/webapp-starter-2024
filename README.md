@@ -20,6 +20,7 @@
   - tailwind
   - react-query
   - react-hook-form
+  - playwright test
 
 - back :
 
