@@ -25,3 +25,10 @@
 - add a docker-compose
 - add and configurate eslint prettier etc...
 - extract JWT-token in env var
+
+
+// LONG TERME
+
+- ma code base de référence, ajouter/mobile
+- je retourne dessus pour copier coller des trucs
+- à tenir à jour
