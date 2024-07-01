@@ -25,4 +25,12 @@
 - back :
 
   - nest
-  - email service
+  - postgres ou sqlit
+
+## notes
+
+- back :
+  - business logic separated in modules (and sepated from route controler and DB usage)
+  - screaming folder structure
+  - no CRUD but just POST /withClearAction
+  - no param in url, no query in url, just JSON body
